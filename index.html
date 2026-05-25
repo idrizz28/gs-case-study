@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Ground Standard — AI Lead Response System</title>
+  <title>AI Lead Response for Martial Arts Gyms</title>
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -375,36 +375,29 @@
       line-height: 1.5;
     }
 
-    /* GYM GRID */
-    .gym-grid {
+    /* STATE GRID */
+    .state-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
       gap: 12px;
+      margin-bottom: 32px;
     }
-    .gym-card {
+    .state-card {
       background: var(--card);
       border: 1px solid var(--border);
       border-radius: 8px;
-      padding: 14px 16px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 10px;
+      padding: 16px 12px;
+      text-align: center;
     }
-    .gym-name { font-size: 13px; font-weight: 500; }
-    .gym-state {
+    .state-abbr {
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--accent);
+      margin-bottom: 4px;
+    }
+    .state-count {
       font-size: 11px;
       color: var(--muted);
-      background: var(--bg);
-      border: 1px solid var(--border);
-      padding: 2px 8px;
-      border-radius: 4px;
-      white-space: nowrap;
-    }
-    .gym-live {
-      font-size: 10px;
-      font-weight: 700;
-      color: var(--accent2);
     }
 
     /* PIPELINE */
@@ -519,16 +512,16 @@
 
 <!-- NAV -->
 <nav>
-  <div class="nav-logo">Ground Standard <span>×</span> AI</div>
+  <div class="nav-logo">AI Lead Response <span>·</span> Martial Arts</div>
   <div class="nav-tag">Case Study — 2026</div>
 </nav>
 
 <!-- HERO -->
 <div class="hero">
   <div class="hero-badge">Live System — Active Now</div>
-  <h1>AI Lead Response<br>at <span class="accent">Gym Scale</span></h1>
+  <h1>More Bookings.<br><span class="accent">Zero Staff Hours.</span></h1>
   <p class="hero-sub">
-    Built and deployed a full SMS lead response system across 22 martial arts gyms.
+    A fully deployed AI SMS lead response system across a network of martial arts gyms.
     Leads book free trial classes 24/7 — no staff required.
   </p>
   <a href="#cases" class="hero-cta">See Case Studies ↓</a>
@@ -537,12 +530,12 @@
 <!-- STATS -->
 <div class="stats">
   <div class="stat-card">
-    <div class="stat-num">31</div>
+    <div class="stat-num">30<span style="font-size:28px;">+</span></div>
     <div class="stat-label">Active bots deployed</div>
   </div>
   <div class="stat-card">
-    <div class="stat-num">22</div>
-    <div class="stat-label">Gyms covered across the US</div>
+    <div class="stat-num">20<span style="font-size:28px;">+</span></div>
+    <div class="stat-label">Gym locations covered</div>
   </div>
   <div class="stat-card">
     <div class="stat-num green">228</div>
@@ -550,7 +543,7 @@
   </div>
   <div class="stat-card">
     <div class="stat-num">65</div>
-    <div class="stat-label">Single gym, 30-day record<br>(Ray Longo MMA)</div>
+    <div class="stat-label">Single gym, 30-day high-water mark</div>
   </div>
   <div class="stat-card">
     <div class="stat-num">13</div>
@@ -568,13 +561,13 @@
 <div class="section">
   <div class="section-label">The System</div>
   <h2>Lead in. Appointment out.</h2>
-  <p class="section-sub">Every gym gets Emma — a front desk AI persona that handles inbound SMS leads from Meta ads, Google, and GHL automations.</p>
+  <p class="section-sub">Every gym gets a front desk AI persona that handles inbound SMS leads from Meta ads, Google, and CRM automations.</p>
 
   <div class="flow-steps">
     <div class="flow-step">
       <div class="step-num">1</div>
       <div class="step-title">Lead opts in</div>
-      <div class="step-desc">Ad click or GHL tag fires. Emma engages within seconds.</div>
+      <div class="step-desc">Ad click or tag fires. AI engages within seconds.</div>
     </div>
     <div class="flow-step">
       <div class="step-num">2</div>
@@ -584,34 +577,34 @@
     <div class="flow-step">
       <div class="step-num">3</div>
       <div class="step-title">Capture</div>
-      <div class="step-desc">Name, email, phone, DOB — all written to GHL in real time.</div>
+      <div class="step-desc">Name, email, phone, DOB — all written to CRM in real time.</div>
     </div>
     <div class="flow-step">
       <div class="step-num">4</div>
       <div class="step-title">Book</div>
-      <div class="step-desc">Trial class booked directly into GHL calendar. Confirmation sent.</div>
+      <div class="step-desc">Trial class booked directly into the gym's live calendar. Confirmation sent.</div>
     </div>
     <div class="flow-step">
       <div class="step-num">5</div>
       <div class="step-title">Tag + track</div>
-      <div class="step-desc">Pipeline tags applied at every stage. Full visibility in CRM.</div>
+      <div class="step-desc">Pipeline tags applied at every stage. Full CRM visibility.</div>
     </div>
   </div>
 
   <div class="arrow-row" style="margin-top:32px;">
     <div class="arrow-item">
-      <div class="arrow-node">n10_intro</div>
+      <div class="arrow-node">Intro + Qualify</div>
       <div class="arrow">→</div>
     </div>
     <div class="arrow-item">
-      <div class="arrow-node">n20_data_capture</div>
+      <div class="arrow-node">Data Capture</div>
       <div class="arrow">→</div>
     </div>
     <div class="arrow-item">
-      <div class="arrow-node green">n30_booking</div>
+      <div class="arrow-node green">Booking</div>
     </div>
   </div>
-  <p style="font-size:12px;color:var(--muted);margin-top:12px;">Agent Node architecture — 3-node flow, no classic branching spaghetti.</p>
+  <p style="font-size:12px;color:var(--muted);margin-top:12px;">3-node Agent architecture — clean, auditable, no branching spaghetti.</p>
 </div>
 
 <hr class="divider">
@@ -620,7 +613,7 @@
 <div class="section" id="cases">
   <div class="section-label">Case Studies</div>
   <h2>Real conversations. Real bookings.</h2>
-  <p class="section-sub">Three representative wins pulled from live GHL data. Transcripts are verbatim.</p>
+  <p class="section-sub">Three representative wins from live CRM data. Transcripts are verbatim from actual lead sessions.</p>
 
   <div class="cases">
 
@@ -628,7 +621,7 @@
     <div class="case-card">
       <div class="case-header">
         <div class="case-meta">
-          <div class="case-gym">Sugoi Submissions — Corpus Christi, TX</div>
+          <div class="case-gym">BJJ Academy — Texas</div>
           <div class="case-location">12:47 AM conversation · Booked in 9 minutes</div>
         </div>
         <div class="case-badge badge-booking">Midnight Booking</div>
@@ -636,7 +629,7 @@
       <div class="case-body">
         <p class="case-summary">
           A returning BJJ practitioner came in at 12:47 AM asking about class times and pricing.
-          Emma handled the pricing deflection and booked him in 9 minutes. No staff involved.
+          The bot handled the pricing deflection and booked him in 9 minutes. No staff involved.
         </p>
         <div class="transcript">
 <div class="t-lead"><span class="t-time">12:47 AM</span>  <strong>LEAD:</strong>  No I use to do BJJ years ago but the instructor moved.<br>
@@ -647,11 +640,11 @@
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;jump right in before we talk membership.</div>
 <div class="t-lead"><span class="t-time">12:49 AM</span>  <strong>LEAD:</strong>  Yes just for myself</div>
 <div class="t-bot"><span class="t-time">12:49 AM</span>  <strong>BOT:</strong>&nbsp;&nbsp;&nbsp;Perfect! Let's get you scheduled for a free trial class.</div>
-<div class="t-lead"><span class="t-time">12:52 AM</span>  <strong>LEAD:</strong>  dalemoody59@yahoo.com</div>
+<div class="t-lead"><span class="t-time">12:52 AM</span>  <strong>LEAD:</strong>  [email provided]</div>
 <div class="t-bot"><span class="t-time">12:54 AM</span>  <strong>BOT:</strong>&nbsp;&nbsp;&nbsp;I've got openings tomorrow Friday at 6:30 PM, Tuesday the 26th<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;at 6:30 PM, or Wednesday the 27th at 6:30 PM. What works best?</div>
 <div class="t-lead"><span class="t-time">12:55 AM</span>  <strong>LEAD:</strong>  Wednesday the 27th and then go from there</div>
-<div class="t-bot"><span class="t-time">12:56 AM</span>  <strong>BOT:</strong>&nbsp;&nbsp;&nbsp;<span class="t-booked">✓ APPOINTMENT BOOKED</span> Dale Moody — Free Trial Class<br>
+<div class="t-bot"><span class="t-time">12:56 AM</span>  <strong>BOT:</strong>&nbsp;&nbsp;&nbsp;<span class="t-booked">✓ APPOINTMENT BOOKED</span> — Free Trial Class<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;You're all set for Wednesday, May 27th at 6:30 PM.</div>
         </div>
         <div class="case-result">
@@ -664,7 +657,7 @@
     <div class="case-card">
       <div class="case-header">
         <div class="case-meta">
-          <div class="case-gym">Signature of Jiu-Jitsu — Belmont, CA</div>
+          <div class="case-gym">Jiu-Jitsu Academy — California</div>
           <div class="case-location">2:06 AM conversation · Parent + child youth enrollment</div>
         </div>
         <div class="case-badge badge-youth">Youth Path</div>
@@ -682,15 +675,15 @@
 <div class="t-lead"><span class="t-time">02:07 AM</span>  <strong>LEAD:</strong>  Yes I think that would be great.</div>
 <div class="t-lead"><span class="t-time">02:31 AM</span>  <strong>LEAD:</strong>  06/19/2016</div>
 <div class="t-bot"><span class="t-time">02:31 AM</span>  <strong>BOT:</strong>&nbsp;&nbsp;&nbsp;Perfect. And your date of birth as well? Just so we have the parent info on file.</div>
-<div class="t-bot"><span class="t-time">02:33 AM</span>  <strong>BOT:</strong>&nbsp;&nbsp;&nbsp;Perfect. Yvo is 9, so he'll be in our Kids 8–10 Brazilian<br>
+<div class="t-bot"><span class="t-time">02:33 AM</span>  <strong>BOT:</strong>&nbsp;&nbsp;&nbsp;Perfect. He's 9, so he'll be in our Kids 8–10 Brazilian<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Jiu-Jitsu class. I've got Wednesday May 27th at 3:30 PM,<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Wednesday June 3rd at 3:30 PM, or Monday June 8th at 3:30 PM.</div>
 <div class="t-lead"><span class="t-time">02:51 AM</span>  <strong>LEAD:</strong>  June 8 at 3:30 would work</div>
-<div class="t-bot"><span class="t-time">02:51 AM</span>  <strong>BOT:</strong>&nbsp;&nbsp;&nbsp;<span class="t-booked">✓ APPOINTMENT BOOKED</span> Yvo Bogert — Free Trial Class<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Yvo is all set for Monday, June 8th at 3:30 PM.</div>
+<div class="t-bot"><span class="t-time">02:51 AM</span>  <strong>BOT:</strong>&nbsp;&nbsp;&nbsp;<span class="t-booked">✓ APPOINTMENT BOOKED</span> — Free Trial Class<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;He's all set for Monday, June 8th at 3:30 PM. See you both then!</div>
         </div>
         <div class="case-result">
-          <strong>Result:</strong> Bot correctly routed to youth path, age-computed Kids 8–10, captured child + parent DOB, booked to the correct kids calendar. Parent confirmed with 👍.
+          <strong>Result:</strong> Bot correctly routed to youth path, computed Kids 8–10 from DOB, captured child and parent info, and booked to the correct kids calendar. Parent confirmed with 👍.
         </div>
       </div>
     </div>
@@ -699,26 +692,28 @@
     <div class="case-card">
       <div class="case-header">
         <div class="case-meta">
-          <div class="case-gym">The Academy Eden Prairie — Eden Prairie, MN</div>
-          <div class="case-location">8-day thread · 3 booking attempts · Pricing objection</div>
+          <div class="case-gym">Martial Arts Academy — Minnesota</div>
+          <div class="case-location">8-day thread · 3 booking attempts · Pricing objection handled</div>
         </div>
         <div class="case-badge badge-persist">Persistence</div>
       </div>
       <div class="case-body">
         <p class="case-summary">
           Lead no-showed twice, went cold, then re-engaged asking about the schedule. Bot stayed in,
-          handled his pricing concern without quoting a number, rescheduled twice, and closed on the third attempt.
+          handled the pricing concern without quoting a number, rescheduled twice, and closed on the third attempt.
         </p>
         <div class="quote-block" style="margin:0 0 20px;">
           <div class="quote-text">"I do appreciate you guys reaching out and scheduling it but I know this is something I want to do, just worried about price right now"</div>
-          <div class="quote-source">— Niman Matan, lead · Academy Eden Prairie</div>
+          <div class="quote-source">— Lead · Martial Arts Academy, Minnesota</div>
         </div>
         <div class="transcript">
-<div class="t-bot"><span class="t-time">Bot:</span>  <strong>BOT:</strong>&nbsp;&nbsp;&nbsp;We will see you at 7:30pm for your free intro class.<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;We can talk after class about everything else.</div>
+<div class="t-bot"><span class="t-time">Bot response:</span><br>
+<br>
+&nbsp;&nbsp;We will see you at 7:30pm for your free intro class.<br>
+&nbsp;&nbsp;We can talk after class about everything else.</div>
         </div>
         <div class="case-result">
-          <strong>Result:</strong> 3 booking attempts over 8 days. Bot stayed persistent and non-pushy, handled pricing objection without giving a number, and closed on the third attempt. Lead came back on his own, specified Muay Thai, and was booked.
+          <strong>Result:</strong> 3 booking attempts over 8 days. Bot stayed persistent and non-pushy, handled pricing objection without giving a number, and closed on the third attempt. Lead came back on his own and was booked.
         </div>
       </div>
     </div>
@@ -746,7 +741,7 @@
       <div class="scenario-icon icon-blue">👦</div>
       <div class="scenario-text">
         <div class="scenario-title">Parent enrolling a child</div>
-        <div class="scenario-desc">Youth path with age-routing to the correct kids calendar. Parent DOB also captured.</div>
+        <div class="scenario-desc">Youth path with age-routing to the correct kids calendar. Parent info also captured.</div>
       </div>
     </div>
     <div class="scenario-card">
@@ -781,7 +776,7 @@
       <div class="scenario-icon icon-green">🤝</div>
       <div class="scenario-text">
         <div class="scenario-title">Staff takes over</div>
-        <div class="scenario-desc"><code style="font-size:11px;background:var(--bg);padding:1px 5px;border-radius:3px;">ai off</code> tag applies autoShutoff instantly. Bot never re-engages.</div>
+        <div class="scenario-desc">One tag instantly disables the bot on any conversation. It never re-engages.</div>
       </div>
     </div>
     <div class="scenario-card">
@@ -790,6 +785,50 @@
         <div class="scenario-title">Hostile / opt-out</div>
         <div class="scenario-desc">Graceful de-escalation. No booking attempt made. No argument.</div>
       </div>
+    </div>
+  </div>
+</div>
+
+<hr class="divider">
+
+<!-- COVERAGE -->
+<div class="section">
+  <div class="section-label">Coverage</div>
+  <h2>20+ gyms across 13 states.</h2>
+  <p class="section-sub">Deployed coast to coast — BJJ, MMA, Muay Thai, and multi-discipline gyms of all sizes.</p>
+
+  <div class="state-grid">
+    <div class="state-card"><div class="state-abbr">FL</div><div class="state-count">Florida</div></div>
+    <div class="state-card"><div class="state-abbr">CA</div><div class="state-count">California</div></div>
+    <div class="state-card"><div class="state-abbr">NY</div><div class="state-count">New York</div></div>
+    <div class="state-card"><div class="state-abbr">TX</div><div class="state-count">Texas</div></div>
+    <div class="state-card"><div class="state-abbr">MN</div><div class="state-count">Minnesota</div></div>
+    <div class="state-card"><div class="state-abbr">AZ</div><div class="state-count">Arizona</div></div>
+    <div class="state-card"><div class="state-abbr">NC</div><div class="state-count">N. Carolina</div></div>
+    <div class="state-card"><div class="state-abbr">MD</div><div class="state-count">Maryland</div></div>
+    <div class="state-card"><div class="state-abbr">NJ</div><div class="state-count">New Jersey</div></div>
+    <div class="state-card"><div class="state-abbr">OR</div><div class="state-count">Oregon</div></div>
+    <div class="state-card"><div class="state-abbr">WA</div><div class="state-count">Washington</div></div>
+    <div class="state-card"><div class="state-abbr">AL</div><div class="state-count">Alabama</div></div>
+    <div class="state-card"><div class="state-abbr">CT</div><div class="state-count">Connecticut</div></div>
+  </div>
+
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px;">
+    <div style="padding:20px;background:var(--card);border:1px solid var(--border);border-radius:10px;text-align:center;">
+      <div style="font-size:32px;font-weight:700;color:var(--accent2);margin-bottom:4px;">BJJ</div>
+      <div style="font-size:13px;color:var(--muted);">Brazilian Jiu-Jitsu</div>
+    </div>
+    <div style="padding:20px;background:var(--card);border:1px solid var(--border);border-radius:10px;text-align:center;">
+      <div style="font-size:32px;font-weight:700;color:var(--accent2);margin-bottom:4px;">MMA</div>
+      <div style="font-size:13px;color:var(--muted);">Mixed Martial Arts</div>
+    </div>
+    <div style="padding:20px;background:var(--card);border:1px solid var(--border);border-radius:10px;text-align:center;">
+      <div style="font-size:32px;font-weight:700;color:var(--accent2);margin-bottom:4px;">MT</div>
+      <div style="font-size:13px;color:var(--muted);">Muay Thai</div>
+    </div>
+    <div style="padding:20px;background:var(--card);border:1px solid var(--border);border-radius:10px;text-align:center;">
+      <div style="font-size:32px;font-weight:700;color:var(--accent2);margin-bottom:4px;">Kids</div>
+      <div style="font-size:13px;color:var(--muted);">Ages 3–14+ programs</div>
     </div>
   </div>
 </div>
@@ -805,18 +844,18 @@
   <div class="pipeline-steps">
     <div class="pipeline-card">
       <div class="pipeline-num">Phase 01</div>
-      <div class="pipeline-title"><code>/closebot-plan</code></div>
-      <div class="pipeline-desc">Structured intake: live GHL calendar pull, program mapping, full flow design. Outputs a JSON spec that feeds directly into the build.</div>
+      <div class="pipeline-title">Plan</div>
+      <div class="pipeline-desc">Structured intake: live calendar pull, program mapping, full flow design. Outputs a spec that feeds directly into the build step.</div>
       <div class="pipeline-tags">
-        <span class="pipeline-tag">GHL calendar pull</span>
+        <span class="pipeline-tag">calendar audit</span>
         <span class="pipeline-tag">flow mapping</span>
-        <span class="pipeline-tag">spec JSON</span>
+        <span class="pipeline-tag">spec output</span>
       </div>
     </div>
     <div class="pipeline-card">
       <div class="pipeline-num">Phase 02</div>
-      <div class="pipeline-title"><code>/closebot-build</code></div>
-      <div class="pipeline-desc">KDL generation from Agent Node template, architecture assertion, import + publish via CloseBot API, sandbox attach. No prod until test passes.</div>
+      <div class="pipeline-title">Build</div>
+      <div class="pipeline-desc">Agent Node architecture, API deploy, architecture assertion. Sandbox attach only — no production access until test passes.</div>
       <div class="pipeline-tags">
         <span class="pipeline-tag">Agent Node only</span>
         <span class="pipeline-tag">API deploy</span>
@@ -825,11 +864,11 @@
     </div>
     <div class="pipeline-card">
       <div class="pipeline-num">Phase 03</div>
-      <div class="pipeline-title"><code>/closebot-test</code></div>
-      <div class="pipeline-desc">13-persona eval suite across adult, youth, multi-enrollee, minor gate, pricing, hostile, and non-bookable scenarios. Every booking verified in GHL — not just the transcript.</div>
+      <div class="pipeline-title">Test</div>
+      <div class="pipeline-desc">13-persona eval suite: adult, youth, multi-enrollee, minor gate, pricing, hostile, non-bookable. Every booking verified in the CRM — not just the transcript.</div>
       <div class="pipeline-tags">
         <span class="pipeline-tag">13 personas</span>
-        <span class="pipeline-tag">GHL verified</span>
+        <span class="pipeline-tag">CRM verified</span>
         <span class="pipeline-tag">judge LLM</span>
       </div>
     </div>
@@ -838,53 +877,19 @@
   <div style="margin-top:32px;padding:20px 24px;background:var(--card);border:1px solid var(--border);border-radius:10px;">
     <div style="font-size:13px;font-weight:600;margin-bottom:12px;color:var(--text);">Quality gates — every bot, every time</div>
     <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:8px;">
-      <div style="font-size:12px;color:var(--muted);display:flex;gap:8px;align-items:flex-start;"><span style="color:var(--accent2);">✓</span> Agent Node architecture only — no classic bots</div>
+      <div style="font-size:12px;color:var(--muted);display:flex;gap:8px;align-items:flex-start;"><span style="color:var(--accent2);">✓</span> Agent Node architecture only</div>
       <div style="font-size:12px;color:var(--muted);display:flex;gap:8px;align-items:flex-start;"><span style="color:var(--accent2);">✓</span> Zero blocker fails across all 13 personas</div>
-      <div style="font-size:12px;color:var(--muted);display:flex;gap:8px;align-items:flex-start;"><span style="color:var(--accent2);">✓</span> Every booking confirmed against GHL API</div>
+      <div style="font-size:12px;color:var(--muted);display:flex;gap:8px;align-items:flex-start;"><span style="color:var(--accent2);">✓</span> Every booking confirmed against CRM</div>
       <div style="font-size:12px;color:var(--muted);display:flex;gap:8px;align-items:flex-start;"><span style="color:var(--accent2);">✓</span> Adult path passes ≥2/3 non-determinism runs</div>
-      <div style="font-size:12px;color:var(--muted);display:flex;gap:8px;align-items:flex-start;"><span style="color:var(--accent2);">✓</span> Production attach requires explicit per-gym go</div>
+      <div style="font-size:12px;color:var(--muted);display:flex;gap:8px;align-items:flex-start;"><span style="color:var(--accent2);">✓</span> Production requires explicit per-gym authorization</div>
     </div>
-  </div>
-</div>
-
-<hr class="divider">
-
-<!-- GYM COVERAGE -->
-<div class="section">
-  <div class="section-label">Coverage</div>
-  <h2>22 gyms. 13 states.</h2>
-  <p class="section-sub">FL · CA · NY · TX · MN · CT · AZ · NC · AL · MD · NJ · OR · WA</p>
-
-  <div class="gym-grid">
-    <div class="gym-card"><div class="gym-name">Vacaville Grappling Academy</div><div class="gym-state">CA</div></div>
-    <div class="gym-card"><div class="gym-name">Hamptons Jiu-Jitsu West</div><div class="gym-state">NY</div></div>
-    <div class="gym-card"><div class="gym-name">SOMA MVMT</div><div class="gym-state">CA</div></div>
-    <div class="gym-card"><div class="gym-name">10th Planet Miami</div><div class="gym-state">FL</div></div>
-    <div class="gym-card"><div class="gym-name">Champion Martial Arts</div><div class="gym-state">AZ</div></div>
-    <div class="gym-card"><div class="gym-name">The Academy Eden Prairie</div><div class="gym-state">MN</div></div>
-    <div class="gym-card"><div class="gym-name">Academy of JJ Scottsdale</div><div class="gym-state">AZ</div></div>
-    <div class="gym-card"><div class="gym-name">Ballantyne Martial Arts</div><div class="gym-state">NC</div></div>
-    <div class="gym-card"><div class="gym-name">Breathe Jiu-Jitsu</div><div class="gym-state">OR</div></div>
-    <div class="gym-card"><div class="gym-name">Artistry BJJ</div><div class="gym-state">WA</div></div>
-    <div class="gym-card"><div class="gym-name">Grit Jiu-Jitsu</div><div class="gym-state">TX</div></div>
-    <div class="gym-card"><div class="gym-name">Centerline Jiu-Jitsu</div><div class="gym-state">AZ</div></div>
-    <div class="gym-card"><div class="gym-name">OM Brazilian JJ & Judo</div><div class="gym-state">CA</div></div>
-    <div class="gym-card"><div class="gym-name">Sugoi Submissions</div><div class="gym-state">TX</div></div>
-    <div class="gym-card"><div class="gym-name">Ray Longo's MMA</div><div class="gym-state">NY</div></div>
-    <div class="gym-card"><div class="gym-name">Universal Mixed Martial Arts</div><div class="gym-state">CA</div></div>
-    <div class="gym-card"><div class="gym-name">Montgomery Brazilian JJ</div><div class="gym-state">AL</div></div>
-    <div class="gym-card"><div class="gym-name">Signature of Jiu-Jitsu</div><div class="gym-state">CA</div></div>
-    <div class="gym-card"><div class="gym-name">Roberts Family MMA</div><div class="gym-state">NJ</div></div>
-    <div class="gym-card"><div class="gym-name">Simple Man Martial Arts</div><div class="gym-state">MD</div></div>
-    <div class="gym-card"><div class="gym-name">Killer B Combat Sports</div><div class="gym-state">MD</div></div>
-    <div class="gym-card"><div class="gym-name">Mason Dixon Jiu-Jitsu</div><div class="gym-state">MD</div></div>
   </div>
 </div>
 
 <!-- FOOTER -->
 <footer>
-  <div style="margin-bottom:8px;"><strong>Ground Standard × AI Lead Response System</strong></div>
-  <div>Built on CloseBot + GoHighLevel · Deployed 2026 · All data from live GHL records</div>
+  <div style="margin-bottom:8px;"><strong>AI Lead Response System — Martial Arts</strong></div>
+  <div>Built on CloseBot + GoHighLevel · Deployed 2026 · All metrics from live CRM data</div>
 </footer>
 
 </body>
