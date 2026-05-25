@@ -1,0 +1,891 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ground Standard — AI Lead Response System</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #0a0a0f;
+      --surface: #12121a;
+      --border: #1e1e2e;
+      --accent: #6c63ff;
+      --accent2: #00d4aa;
+      --text: #e8e8f0;
+      --muted: #7a7a9a;
+      --card: #16161f;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      line-height: 1.6;
+    }
+
+    /* NAV */
+    nav {
+      padding: 20px 40px;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      background: rgba(10,10,15,0.95);
+      backdrop-filter: blur(10px);
+      z-index: 100;
+    }
+    .nav-logo {
+      font-size: 15px;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      color: var(--text);
+    }
+    .nav-logo span { color: var(--accent); }
+    .nav-tag {
+      font-size: 12px;
+      color: var(--muted);
+      border: 1px solid var(--border);
+      padding: 4px 10px;
+      border-radius: 20px;
+    }
+
+    /* HERO */
+    .hero {
+      padding: 100px 40px 80px;
+      max-width: 900px;
+      margin: 0 auto;
+      text-align: center;
+    }
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(108,99,255,0.1);
+      border: 1px solid rgba(108,99,255,0.3);
+      color: var(--accent);
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 6px 14px;
+      border-radius: 20px;
+      margin-bottom: 32px;
+    }
+    .hero-badge::before {
+      content: '';
+      width: 6px;
+      height: 6px;
+      background: var(--accent2);
+      border-radius: 50%;
+      animation: pulse 2s infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.3; }
+    }
+    h1 {
+      font-size: clamp(36px, 6vw, 64px);
+      font-weight: 700;
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      margin-bottom: 24px;
+    }
+    h1 .accent { color: var(--accent); }
+    .hero-sub {
+      font-size: 18px;
+      color: var(--muted);
+      max-width: 600px;
+      margin: 0 auto 48px;
+    }
+    .hero-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--accent);
+      color: white;
+      text-decoration: none;
+      padding: 14px 28px;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 15px;
+      transition: opacity 0.2s;
+    }
+    .hero-cta:hover { opacity: 0.85; }
+
+    /* STATS */
+    .stats {
+      padding: 60px 40px;
+      max-width: 1000px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 20px;
+    }
+    .stat-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 28px 24px;
+      text-align: center;
+    }
+    .stat-num {
+      font-size: 48px;
+      font-weight: 700;
+      color: var(--accent);
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+    .stat-num.green { color: var(--accent2); }
+    .stat-label {
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.4;
+    }
+
+    /* SECTION HEADERS */
+    .section {
+      padding: 80px 40px;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+    .section-label {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 12px;
+    }
+    h2 {
+      font-size: clamp(26px, 4vw, 36px);
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      margin-bottom: 16px;
+    }
+    .section-sub {
+      color: var(--muted);
+      font-size: 16px;
+      margin-bottom: 48px;
+      max-width: 600px;
+    }
+
+    /* HOW IT WORKS */
+    .flow-steps {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 0;
+      position: relative;
+    }
+    .flow-step {
+      padding: 28px 20px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      text-align: center;
+      position: relative;
+    }
+    .flow-step:first-child { border-radius: 12px 0 0 12px; }
+    .flow-step:last-child { border-radius: 0 12px 12px 0; }
+    .flow-step + .flow-step { border-left: none; }
+    .step-num {
+      width: 32px;
+      height: 32px;
+      background: rgba(108,99,255,0.15);
+      border: 1px solid rgba(108,99,255,0.4);
+      color: var(--accent);
+      font-size: 13px;
+      font-weight: 700;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 12px;
+    }
+    .step-title {
+      font-size: 13px;
+      font-weight: 600;
+      margin-bottom: 6px;
+    }
+    .step-desc {
+      font-size: 12px;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+    .arrow-row {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0;
+      margin-top: 24px;
+      flex-wrap: wrap;
+    }
+    .arrow-item {
+      display: flex;
+      align-items: center;
+      gap: 0;
+    }
+    .arrow-node {
+      background: rgba(108,99,255,0.1);
+      border: 1px solid rgba(108,99,255,0.3);
+      color: var(--accent);
+      font-size: 12px;
+      font-weight: 600;
+      padding: 8px 16px;
+      border-radius: 6px;
+      white-space: nowrap;
+    }
+    .arrow-node.green {
+      background: rgba(0,212,170,0.08);
+      border-color: rgba(0,212,170,0.3);
+      color: var(--accent2);
+    }
+    .arrow {
+      color: var(--muted);
+      font-size: 16px;
+      padding: 0 8px;
+    }
+
+    /* CASE STUDIES */
+    .cases {
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+    }
+    .case-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      overflow: hidden;
+    }
+    .case-header {
+      padding: 24px 28px 20px;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+    .case-meta { flex: 1; min-width: 200px; }
+    .case-gym {
+      font-size: 18px;
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+    .case-location {
+      font-size: 13px;
+      color: var(--muted);
+    }
+    .case-badge {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      padding: 5px 12px;
+      border-radius: 20px;
+      white-space: nowrap;
+    }
+    .badge-booking { background: rgba(0,212,170,0.1); color: var(--accent2); border: 1px solid rgba(0,212,170,0.3); }
+    .badge-youth { background: rgba(108,99,255,0.1); color: var(--accent); border: 1px solid rgba(108,99,255,0.3); }
+    .badge-persist { background: rgba(255,165,0,0.1); color: #ffa500; border: 1px solid rgba(255,165,0,0.3); }
+    .case-body { padding: 24px 28px; }
+    .case-summary {
+      font-size: 15px;
+      color: var(--muted);
+      margin-bottom: 20px;
+      line-height: 1.6;
+    }
+    .transcript {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 20px;
+      font-family: 'SF Mono', 'Fira Code', 'Fira Mono', monospace;
+      font-size: 12px;
+      line-height: 1.8;
+      overflow-x: auto;
+    }
+    .t-time { color: var(--muted); }
+    .t-lead { color: #e8e8f0; }
+    .t-lead strong { color: #aaa; }
+    .t-bot { color: var(--accent2); }
+    .t-bot strong { color: #5fd4a8; }
+    .t-booked {
+      display: inline-block;
+      margin-top: 8px;
+      background: rgba(0,212,170,0.08);
+      border: 1px solid rgba(0,212,170,0.2);
+      color: var(--accent2);
+      font-size: 11px;
+      padding: 4px 10px;
+      border-radius: 4px;
+    }
+    .case-result {
+      margin-top: 20px;
+      padding: 14px 18px;
+      background: rgba(0,212,170,0.05);
+      border-left: 3px solid var(--accent2);
+      border-radius: 0 8px 8px 0;
+      font-size: 14px;
+      line-height: 1.5;
+    }
+    .case-result strong { color: var(--accent2); }
+
+    /* SCENARIO TABLE */
+    .scenario-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 16px;
+    }
+    .scenario-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 18px 20px;
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+    }
+    .scenario-icon {
+      width: 36px;
+      height: 36px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+      flex-shrink: 0;
+    }
+    .icon-green { background: rgba(0,212,170,0.1); }
+    .icon-blue { background: rgba(108,99,255,0.1); }
+    .icon-orange { background: rgba(255,165,0,0.1); }
+    .icon-red { background: rgba(255,80,80,0.1); }
+    .scenario-text {}
+    .scenario-title {
+      font-size: 14px;
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+    .scenario-desc {
+      font-size: 12px;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+
+    /* GYM GRID */
+    .gym-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 12px;
+    }
+    .gym-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 14px 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+    }
+    .gym-name { font-size: 13px; font-weight: 500; }
+    .gym-state {
+      font-size: 11px;
+      color: var(--muted);
+      background: var(--bg);
+      border: 1px solid var(--border);
+      padding: 2px 8px;
+      border-radius: 4px;
+      white-space: nowrap;
+    }
+    .gym-live {
+      font-size: 10px;
+      font-weight: 700;
+      color: var(--accent2);
+    }
+
+    /* PIPELINE */
+    .pipeline-steps {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 20px;
+    }
+    .pipeline-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 24px;
+    }
+    .pipeline-num {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      color: var(--accent);
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+    .pipeline-title {
+      font-size: 16px;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+    .pipeline-title code {
+      background: rgba(108,99,255,0.12);
+      border: 1px solid rgba(108,99,255,0.25);
+      color: var(--accent);
+      font-size: 14px;
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-family: 'SF Mono', monospace;
+    }
+    .pipeline-desc {
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+    .pipeline-tags {
+      margin-top: 12px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+    .pipeline-tag {
+      font-size: 11px;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      color: var(--muted);
+      padding: 3px 8px;
+      border-radius: 4px;
+    }
+
+    /* QUOTE */
+    .quote-block {
+      margin: 48px 0;
+      padding: 32px 36px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-left: 4px solid var(--accent);
+      border-radius: 0 12px 12px 0;
+    }
+    .quote-text {
+      font-size: 18px;
+      font-style: italic;
+      color: var(--text);
+      line-height: 1.6;
+      margin-bottom: 12px;
+    }
+    .quote-source {
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    /* DIVIDER */
+    .divider {
+      border: none;
+      border-top: 1px solid var(--border);
+      margin: 0 40px;
+    }
+
+    /* FOOTER */
+    footer {
+      padding: 40px;
+      text-align: center;
+      color: var(--muted);
+      font-size: 13px;
+      border-top: 1px solid var(--border);
+      margin-top: 60px;
+    }
+    footer strong { color: var(--text); }
+
+    /* RESPONSIVE */
+    @media (max-width: 640px) {
+      nav { padding: 16px 20px; }
+      .hero { padding: 60px 20px 50px; }
+      .stats { padding: 40px 20px; }
+      .section { padding: 60px 20px; }
+      .flow-steps { grid-template-columns: 1fr 1fr; }
+      .flow-step:first-child { border-radius: 12px 0 0 0; }
+      .flow-step:last-child { border-radius: 0 0 12px 0; }
+      .divider { margin: 0 20px; }
+      footer { padding: 30px 20px; }
+      .transcript { font-size: 11px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">Ground Standard <span>×</span> AI</div>
+  <div class="nav-tag">Case Study — 2026</div>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-badge">Live System — Active Now</div>
+  <h1>AI Lead Response<br>at <span class="accent">Gym Scale</span></h1>
+  <p class="hero-sub">
+    Built and deployed a full SMS lead response system across 22 martial arts gyms.
+    Leads book free trial classes 24/7 — no staff required.
+  </p>
+  <a href="#cases" class="hero-cta">See Case Studies ↓</a>
+</div>
+
+<!-- STATS -->
+<div class="stats">
+  <div class="stat-card">
+    <div class="stat-num">31</div>
+    <div class="stat-label">Active bots deployed</div>
+  </div>
+  <div class="stat-card">
+    <div class="stat-num">22</div>
+    <div class="stat-label">Gyms covered across the US</div>
+  </div>
+  <div class="stat-card">
+    <div class="stat-num green">228</div>
+    <div class="stat-label">Appointments booked last 30 days</div>
+  </div>
+  <div class="stat-card">
+    <div class="stat-num">65</div>
+    <div class="stat-label">Single gym, 30-day record<br>(Ray Longo MMA)</div>
+  </div>
+  <div class="stat-card">
+    <div class="stat-num">13</div>
+    <div class="stat-label">US states covered</div>
+  </div>
+  <div class="stat-card">
+    <div class="stat-num green">24/7</div>
+    <div class="stat-label">Response time — instant, no delay</div>
+  </div>
+</div>
+
+<hr class="divider">
+
+<!-- HOW IT WORKS -->
+<div class="section">
+  <div class="section-label">The System</div>
+  <h2>Lead in. Appointment out.</h2>
+  <p class="section-sub">Every gym gets Emma — a front desk AI persona that handles inbound SMS leads from Meta ads, Google, and GHL automations.</p>
+
+  <div class="flow-steps">
+    <div class="flow-step">
+      <div class="step-num">1</div>
+      <div class="step-title">Lead opts in</div>
+      <div class="step-desc">Ad click or GHL tag fires. Emma engages within seconds.</div>
+    </div>
+    <div class="flow-step">
+      <div class="step-num">2</div>
+      <div class="step-title">Qualify</div>
+      <div class="step-desc">Adult vs youth, program interest, single vs multi-enrollee.</div>
+    </div>
+    <div class="flow-step">
+      <div class="step-num">3</div>
+      <div class="step-title">Capture</div>
+      <div class="step-desc">Name, email, phone, DOB — all written to GHL in real time.</div>
+    </div>
+    <div class="flow-step">
+      <div class="step-num">4</div>
+      <div class="step-title">Book</div>
+      <div class="step-desc">Trial class booked directly into GHL calendar. Confirmation sent.</div>
+    </div>
+    <div class="flow-step">
+      <div class="step-num">5</div>
+      <div class="step-title">Tag + track</div>
+      <div class="step-desc">Pipeline tags applied at every stage. Full visibility in CRM.</div>
+    </div>
+  </div>
+
+  <div class="arrow-row" style="margin-top:32px;">
+    <div class="arrow-item">
+      <div class="arrow-node">n10_intro</div>
+      <div class="arrow">→</div>
+    </div>
+    <div class="arrow-item">
+      <div class="arrow-node">n20_data_capture</div>
+      <div class="arrow">→</div>
+    </div>
+    <div class="arrow-item">
+      <div class="arrow-node green">n30_booking</div>
+    </div>
+  </div>
+  <p style="font-size:12px;color:var(--muted);margin-top:12px;">Agent Node architecture — 3-node flow, no classic branching spaghetti.</p>
+</div>
+
+<hr class="divider">
+
+<!-- CASE STUDIES -->
+<div class="section" id="cases">
+  <div class="section-label">Case Studies</div>
+  <h2>Real conversations. Real bookings.</h2>
+  <p class="section-sub">Three representative wins pulled from live GHL data. Transcripts are verbatim.</p>
+
+  <div class="cases">
+
+    <!-- CASE 1 -->
+    <div class="case-card">
+      <div class="case-header">
+        <div class="case-meta">
+          <div class="case-gym">Sugoi Submissions — Corpus Christi, TX</div>
+          <div class="case-location">12:47 AM conversation · Booked in 9 minutes</div>
+        </div>
+        <div class="case-badge badge-booking">Midnight Booking</div>
+      </div>
+      <div class="case-body">
+        <p class="case-summary">
+          A returning BJJ practitioner came in at 12:47 AM asking about class times and pricing.
+          Emma handled the pricing deflection and booked him in 9 minutes. No staff involved.
+        </p>
+        <div class="transcript">
+<div class="t-lead"><span class="t-time">12:47 AM</span>  <strong>LEAD:</strong>  No I use to do BJJ years ago but the instructor moved.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;How much is the class and what are the times</div>
+<div class="t-bot"><span class="t-time">12:48 AM</span>  <strong>BOT:</strong>&nbsp;&nbsp;&nbsp;Oh awesome, welcome back to the mats! For class times, we have<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Adult Gi at 6:30 PM on Monday, Tuesday, Thursday, and Friday,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;plus Saturday at 10:00 AM. The first class is free so you can<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;jump right in before we talk membership.</div>
+<div class="t-lead"><span class="t-time">12:49 AM</span>  <strong>LEAD:</strong>  Yes just for myself</div>
+<div class="t-bot"><span class="t-time">12:49 AM</span>  <strong>BOT:</strong>&nbsp;&nbsp;&nbsp;Perfect! Let's get you scheduled for a free trial class.</div>
+<div class="t-lead"><span class="t-time">12:52 AM</span>  <strong>LEAD:</strong>  dalemoody59@yahoo.com</div>
+<div class="t-bot"><span class="t-time">12:54 AM</span>  <strong>BOT:</strong>&nbsp;&nbsp;&nbsp;I've got openings tomorrow Friday at 6:30 PM, Tuesday the 26th<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;at 6:30 PM, or Wednesday the 27th at 6:30 PM. What works best?</div>
+<div class="t-lead"><span class="t-time">12:55 AM</span>  <strong>LEAD:</strong>  Wednesday the 27th and then go from there</div>
+<div class="t-bot"><span class="t-time">12:56 AM</span>  <strong>BOT:</strong>&nbsp;&nbsp;&nbsp;<span class="t-booked">✓ APPOINTMENT BOOKED</span> Dale Moody — Free Trial Class<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;You're all set for Wednesday, May 27th at 6:30 PM.</div>
+        </div>
+        <div class="case-result">
+          <strong>Result:</strong> Booked at 12:56 AM. Zero staff involvement. Lead asked about pricing — bot redirected, collected all data, and closed in 9 minutes.
+        </div>
+      </div>
+    </div>
+
+    <!-- CASE 2 -->
+    <div class="case-card">
+      <div class="case-header">
+        <div class="case-meta">
+          <div class="case-gym">Signature of Jiu-Jitsu — Belmont, CA</div>
+          <div class="case-location">2:06 AM conversation · Parent + child youth enrollment</div>
+        </div>
+        <div class="case-badge badge-youth">Youth Path</div>
+      </div>
+      <div class="case-body">
+        <p class="case-summary">
+          Parent reached out after his son's friend told him about the gym. Bot routed to the youth path,
+          age-verified the child (born 2016 → Kids 8–10 class), captured parent DOB, and booked the correct kids calendar.
+        </p>
+        <div class="transcript">
+<div class="t-lead"><span class="t-time">02:06 AM</span>  <strong>LEAD:</strong>  Hi! We're interested in having our son start.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;His friend Jax attends there and he is interested in joining.</div>
+<div class="t-bot"><span class="t-time">02:06 AM</span>  <strong>BOT:</strong>&nbsp;&nbsp;&nbsp;That's awesome! Love when friends train together. So just<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;to confirm, you're looking to get your son signed up for a trial class?</div>
+<div class="t-lead"><span class="t-time">02:07 AM</span>  <strong>LEAD:</strong>  Yes I think that would be great.</div>
+<div class="t-lead"><span class="t-time">02:31 AM</span>  <strong>LEAD:</strong>  06/19/2016</div>
+<div class="t-bot"><span class="t-time">02:31 AM</span>  <strong>BOT:</strong>&nbsp;&nbsp;&nbsp;Perfect. And your date of birth as well? Just so we have the parent info on file.</div>
+<div class="t-bot"><span class="t-time">02:33 AM</span>  <strong>BOT:</strong>&nbsp;&nbsp;&nbsp;Perfect. Yvo is 9, so he'll be in our Kids 8–10 Brazilian<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Jiu-Jitsu class. I've got Wednesday May 27th at 3:30 PM,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Wednesday June 3rd at 3:30 PM, or Monday June 8th at 3:30 PM.</div>
+<div class="t-lead"><span class="t-time">02:51 AM</span>  <strong>LEAD:</strong>  June 8 at 3:30 would work</div>
+<div class="t-bot"><span class="t-time">02:51 AM</span>  <strong>BOT:</strong>&nbsp;&nbsp;&nbsp;<span class="t-booked">✓ APPOINTMENT BOOKED</span> Yvo Bogert — Free Trial Class<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Yvo is all set for Monday, June 8th at 3:30 PM.</div>
+        </div>
+        <div class="case-result">
+          <strong>Result:</strong> Bot correctly routed to youth path, age-computed Kids 8–10, captured child + parent DOB, booked to the correct kids calendar. Parent confirmed with 👍.
+        </div>
+      </div>
+    </div>
+
+    <!-- CASE 3 -->
+    <div class="case-card">
+      <div class="case-header">
+        <div class="case-meta">
+          <div class="case-gym">The Academy Eden Prairie — Eden Prairie, MN</div>
+          <div class="case-location">8-day thread · 3 booking attempts · Pricing objection</div>
+        </div>
+        <div class="case-badge badge-persist">Persistence</div>
+      </div>
+      <div class="case-body">
+        <p class="case-summary">
+          Lead no-showed twice, went cold, then re-engaged asking about the schedule. Bot stayed in,
+          handled his pricing concern without quoting a number, rescheduled twice, and closed on the third attempt.
+        </p>
+        <div class="quote-block" style="margin:0 0 20px;">
+          <div class="quote-text">"I do appreciate you guys reaching out and scheduling it but I know this is something I want to do, just worried about price right now"</div>
+          <div class="quote-source">— Niman Matan, lead · Academy Eden Prairie</div>
+        </div>
+        <div class="transcript">
+<div class="t-bot"><span class="t-time">Bot:</span>  <strong>BOT:</strong>&nbsp;&nbsp;&nbsp;We will see you at 7:30pm for your free intro class.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;We can talk after class about everything else.</div>
+        </div>
+        <div class="case-result">
+          <strong>Result:</strong> 3 booking attempts over 8 days. Bot stayed persistent and non-pushy, handled pricing objection without giving a number, and closed on the third attempt. Lead came back on his own, specified Muay Thai, and was booked.
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<hr class="divider">
+
+<!-- WHAT IT HANDLES -->
+<div class="section">
+  <div class="section-label">Edge Case Coverage</div>
+  <h2>Built for the hard cases.</h2>
+  <p class="section-sub">Every scenario that would normally drop a lead or require staff intervention is handled in-flow.</p>
+
+  <div class="scenario-grid">
+    <div class="scenario-card">
+      <div class="scenario-icon icon-green">👤</div>
+      <div class="scenario-text">
+        <div class="scenario-title">New adult lead</div>
+        <div class="scenario-desc">Full qualification → data capture → calendar booking, any time of day.</div>
+      </div>
+    </div>
+    <div class="scenario-card">
+      <div class="scenario-icon icon-blue">👦</div>
+      <div class="scenario-text">
+        <div class="scenario-title">Parent enrolling a child</div>
+        <div class="scenario-desc">Youth path with age-routing to the correct kids calendar. Parent DOB also captured.</div>
+      </div>
+    </div>
+    <div class="scenario-card">
+      <div class="scenario-icon icon-blue">👨‍👦</div>
+      <div class="scenario-text">
+        <div class="scenario-title">Parent + self enrolling</div>
+        <div class="scenario-desc">Multi-enrollee: both bookings completed in a single conversation session.</div>
+      </div>
+    </div>
+    <div class="scenario-card">
+      <div class="scenario-icon icon-orange">🚫</div>
+      <div class="scenario-text">
+        <div class="scenario-title">Under-18 self-booking</div>
+        <div class="scenario-desc">Minor gate fires → captures info → routes to team for guardian follow-up. No unsupervised booking.</div>
+      </div>
+    </div>
+    <div class="scenario-card">
+      <div class="scenario-icon icon-orange">💬</div>
+      <div class="scenario-text">
+        <div class="scenario-title">Pricing question</div>
+        <div class="scenario-desc">Firm redirect to trial class every time. No dollar figures given. Ever.</div>
+      </div>
+    </div>
+    <div class="scenario-card">
+      <div class="scenario-icon icon-orange">📋</div>
+      <div class="scenario-text">
+        <div class="scenario-title">Non-bookable program</div>
+        <div class="scenario-desc">Acknowledged without booking path. Redirected to trial for in-person context.</div>
+      </div>
+    </div>
+    <div class="scenario-card">
+      <div class="scenario-icon icon-green">🤝</div>
+      <div class="scenario-text">
+        <div class="scenario-title">Staff takes over</div>
+        <div class="scenario-desc"><code style="font-size:11px;background:var(--bg);padding:1px 5px;border-radius:3px;">ai off</code> tag applies autoShutoff instantly. Bot never re-engages.</div>
+      </div>
+    </div>
+    <div class="scenario-card">
+      <div class="scenario-icon icon-red">⚡</div>
+      <div class="scenario-text">
+        <div class="scenario-title">Hostile / opt-out</div>
+        <div class="scenario-desc">Graceful de-escalation. No booking attempt made. No argument.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<hr class="divider">
+
+<!-- PIPELINE -->
+<div class="section">
+  <div class="section-label">Build Pipeline</div>
+  <h2>Every bot ships the same way.</h2>
+  <p class="section-sub">Three-phase process — plan, build, test. No gym goes live without clearing all quality gates.</p>
+
+  <div class="pipeline-steps">
+    <div class="pipeline-card">
+      <div class="pipeline-num">Phase 01</div>
+      <div class="pipeline-title"><code>/closebot-plan</code></div>
+      <div class="pipeline-desc">Structured intake: live GHL calendar pull, program mapping, full flow design. Outputs a JSON spec that feeds directly into the build.</div>
+      <div class="pipeline-tags">
+        <span class="pipeline-tag">GHL calendar pull</span>
+        <span class="pipeline-tag">flow mapping</span>
+        <span class="pipeline-tag">spec JSON</span>
+      </div>
+    </div>
+    <div class="pipeline-card">
+      <div class="pipeline-num">Phase 02</div>
+      <div class="pipeline-title"><code>/closebot-build</code></div>
+      <div class="pipeline-desc">KDL generation from Agent Node template, architecture assertion, import + publish via CloseBot API, sandbox attach. No prod until test passes.</div>
+      <div class="pipeline-tags">
+        <span class="pipeline-tag">Agent Node only</span>
+        <span class="pipeline-tag">API deploy</span>
+        <span class="pipeline-tag">sandbox first</span>
+      </div>
+    </div>
+    <div class="pipeline-card">
+      <div class="pipeline-num">Phase 03</div>
+      <div class="pipeline-title"><code>/closebot-test</code></div>
+      <div class="pipeline-desc">13-persona eval suite across adult, youth, multi-enrollee, minor gate, pricing, hostile, and non-bookable scenarios. Every booking verified in GHL — not just the transcript.</div>
+      <div class="pipeline-tags">
+        <span class="pipeline-tag">13 personas</span>
+        <span class="pipeline-tag">GHL verified</span>
+        <span class="pipeline-tag">judge LLM</span>
+      </div>
+    </div>
+  </div>
+
+  <div style="margin-top:32px;padding:20px 24px;background:var(--card);border:1px solid var(--border);border-radius:10px;">
+    <div style="font-size:13px;font-weight:600;margin-bottom:12px;color:var(--text);">Quality gates — every bot, every time</div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:8px;">
+      <div style="font-size:12px;color:var(--muted);display:flex;gap:8px;align-items:flex-start;"><span style="color:var(--accent2);">✓</span> Agent Node architecture only — no classic bots</div>
+      <div style="font-size:12px;color:var(--muted);display:flex;gap:8px;align-items:flex-start;"><span style="color:var(--accent2);">✓</span> Zero blocker fails across all 13 personas</div>
+      <div style="font-size:12px;color:var(--muted);display:flex;gap:8px;align-items:flex-start;"><span style="color:var(--accent2);">✓</span> Every booking confirmed against GHL API</div>
+      <div style="font-size:12px;color:var(--muted);display:flex;gap:8px;align-items:flex-start;"><span style="color:var(--accent2);">✓</span> Adult path passes ≥2/3 non-determinism runs</div>
+      <div style="font-size:12px;color:var(--muted);display:flex;gap:8px;align-items:flex-start;"><span style="color:var(--accent2);">✓</span> Production attach requires explicit per-gym go</div>
+    </div>
+  </div>
+</div>
+
+<hr class="divider">
+
+<!-- GYM COVERAGE -->
+<div class="section">
+  <div class="section-label">Coverage</div>
+  <h2>22 gyms. 13 states.</h2>
+  <p class="section-sub">FL · CA · NY · TX · MN · CT · AZ · NC · AL · MD · NJ · OR · WA</p>
+
+  <div class="gym-grid">
+    <div class="gym-card"><div class="gym-name">Vacaville Grappling Academy</div><div class="gym-state">CA</div></div>
+    <div class="gym-card"><div class="gym-name">Hamptons Jiu-Jitsu West</div><div class="gym-state">NY</div></div>
+    <div class="gym-card"><div class="gym-name">SOMA MVMT</div><div class="gym-state">CA</div></div>
+    <div class="gym-card"><div class="gym-name">10th Planet Miami</div><div class="gym-state">FL</div></div>
+    <div class="gym-card"><div class="gym-name">Champion Martial Arts</div><div class="gym-state">AZ</div></div>
+    <div class="gym-card"><div class="gym-name">The Academy Eden Prairie</div><div class="gym-state">MN</div></div>
+    <div class="gym-card"><div class="gym-name">Academy of JJ Scottsdale</div><div class="gym-state">AZ</div></div>
+    <div class="gym-card"><div class="gym-name">Ballantyne Martial Arts</div><div class="gym-state">NC</div></div>
+    <div class="gym-card"><div class="gym-name">Breathe Jiu-Jitsu</div><div class="gym-state">OR</div></div>
+    <div class="gym-card"><div class="gym-name">Artistry BJJ</div><div class="gym-state">WA</div></div>
+    <div class="gym-card"><div class="gym-name">Grit Jiu-Jitsu</div><div class="gym-state">TX</div></div>
+    <div class="gym-card"><div class="gym-name">Centerline Jiu-Jitsu</div><div class="gym-state">AZ</div></div>
+    <div class="gym-card"><div class="gym-name">OM Brazilian JJ & Judo</div><div class="gym-state">CA</div></div>
+    <div class="gym-card"><div class="gym-name">Sugoi Submissions</div><div class="gym-state">TX</div></div>
+    <div class="gym-card"><div class="gym-name">Ray Longo's MMA</div><div class="gym-state">NY</div></div>
+    <div class="gym-card"><div class="gym-name">Universal Mixed Martial Arts</div><div class="gym-state">CA</div></div>
+    <div class="gym-card"><div class="gym-name">Montgomery Brazilian JJ</div><div class="gym-state">AL</div></div>
+    <div class="gym-card"><div class="gym-name">Signature of Jiu-Jitsu</div><div class="gym-state">CA</div></div>
+    <div class="gym-card"><div class="gym-name">Roberts Family MMA</div><div class="gym-state">NJ</div></div>
+    <div class="gym-card"><div class="gym-name">Simple Man Martial Arts</div><div class="gym-state">MD</div></div>
+    <div class="gym-card"><div class="gym-name">Killer B Combat Sports</div><div class="gym-state">MD</div></div>
+    <div class="gym-card"><div class="gym-name">Mason Dixon Jiu-Jitsu</div><div class="gym-state">MD</div></div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div style="margin-bottom:8px;"><strong>Ground Standard × AI Lead Response System</strong></div>
+  <div>Built on CloseBot + GoHighLevel · Deployed 2026 · All data from live GHL records</div>
+</footer>
+
+</body>
+</html>
